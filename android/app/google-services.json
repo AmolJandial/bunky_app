@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "940828001914",
+    "project_id": "bunkyapp-206a3",
+    "storage_bucket": "bunkyapp-206a3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:940828001914:android:d4a0c5290d2573639d9dc3",
+        "android_client_info": {
+          "package_name": "com.weeb.bunky_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "940828001914-f0k7bv8vncatah94pl9hsiadh9nv985v.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAlmrqzltGyRb-mCAzvs5MUANtA_yG-iXI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "940828001914-f0k7bv8vncatah94pl9hsiadh9nv985v.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
