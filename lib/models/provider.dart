@@ -85,26 +85,61 @@ class DataProvider extends ChangeNotifier {
     return data;
   }
 
-  Future updataData(int index) async {
-    subjects[index]['attended']++;
+  Future updateAttendedData(String subjectName) async {
+    int newAttended;
+    subjects.forEach((element) {
+      if (element['subjectName'] == subjectName) {
+        element['attended']++;
+        newAttended = element['attended'];
+      }
+    });
+
     // print("after click ${data['username']}");
     await FirebaseFirestore.instance
         .collection('student')
-        .doc('1234')
+        .doc(uid)
         .collection('subjects')
         .get()
         .then((value) async {
       String someId = value.docs[0].id;
+      print(someId);
       await FirebaseFirestore.instance
           .collection('student')
-          .doc('1234')
+          .doc(uid)
           .collection('subjects')
           .doc(someId)
           .update({
-        'Subject1.attended': subjects[index]['attended'],
+        '$subjectName.attended': newAttended,
       });
     });
-    notifyListeners();
-    // print(docId);
+  }
+
+  Future updateMissedData(String subjectName) async {
+    int newMissed;
+    subjects.forEach((element) {
+      if (element['subjectName'] == subjectName) {
+        element['missed']++;
+        newMissed = element['missed'];
+      }
+    });
+
+    // print("after click ${data['username']}");
+    await FirebaseFirestore.instance
+        .collection('student')
+        .doc(uid)
+        .collection('subjects')
+        .get()
+        .then((value) async {
+      String someId = value.docs[0].id;
+      print(someId);
+      await FirebaseFirestore.instance
+          .collection('student')
+          .doc(uid)
+          .collection('subjects')
+          .doc(someId)
+          .update({
+        '$subjectName.missed': newMissed,
+      });
+    });
   }
 }

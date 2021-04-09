@@ -16,7 +16,7 @@ class DataInitialize extends StatefulWidget {
 class _DataInitializeState extends State<DataInitialize> {
   @override
   void initState() {
-    // TODO: implement initState
+    
     super.initState();
     FirebaseAuth.instance.authStateChanges().listen((user) {
       if (user == null) {

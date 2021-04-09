@@ -1,7 +1,7 @@
 import 'package:bunky_app/screens/home_screen.dart';
-import 'package:bunky_app/widgets/HomeScreen/home_screen_body.dart';
-import 'package:bunky_app/widgets/HomeScreen/settings_screen.dart';
-import 'package:bunky_app/widgets/HomeScreen/subject_grid_screen.dart';
+
+import 'package:bunky_app/screens/settings_screen.dart';
+import 'package:bunky_app/screens/subject_grid_screen.dart';
 import 'package:flutter/material.dart';
 
 class BottomNavBar extends StatefulWidget {

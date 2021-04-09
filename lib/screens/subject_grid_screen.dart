@@ -1,4 +1,4 @@
-import 'package:bunky_app/widgets/HomeScreen/bottom_nav_bar.dart';
+import 'package:bunky_app/constants/bottom_nav_bar.dart';
 import 'package:flutter/material.dart';
 
 class SubjectGridScreen extends StatelessWidget {
