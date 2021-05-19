@@ -1,19 +1,29 @@
 import 'package:bunky_app/models/provider.dart';
+import 'package:bunky_app/widgets/BottomSheet/voting.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import './voting_started.dart';
+import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 
 class SubjectDetail extends StatefulWidget {
   final Map<String, dynamic> chosenSubject;
   final int index;
-  SubjectDetail(this.chosenSubject, this.index);
+  final UserData userData;
+  SubjectDetail(this.chosenSubject, this.index, this.userData);
 
   @override
   _SubjectDetailState createState() => _SubjectDetailState();
 }
 
 class _SubjectDetailState extends State<SubjectDetail> {
-  Widget subjectDetailDesign(Map<String, dynamic> chosenSubject,
-      BuildContext context, DataProvider provider) {
+  Widget subjectDetailDesign(
+    Map<String, dynamic> chosenSubject,
+    BuildContext context,
+    DataProvider provider,
+    UserData userData,
+    bool hasVotingStarted,
+  ) {
     String total =
         (chosenSubject['attended'] + chosenSubject['missed']).toString();
     MediaQueryData mediaQuery = MediaQuery.of(context);
@@ -28,7 +38,10 @@ class _SubjectDetailState extends State<SubjectDetail> {
           //Subject Name Starts
           Text(
             chosenSubject['subjectName'],
-            style: TextStyle(fontSize: 20),
+            style: TextStyle(
+              fontSize: 20,
+              color: Color.fromRGBO(253, 145, 145, 1),
+            ),
           ),
           //Subject Name Ends
 
@@ -50,7 +63,9 @@ class _SubjectDetailState extends State<SubjectDetail> {
                     padding: EdgeInsets.all(8),
                     height: mediaQuery.size.height * 0.10,
                     decoration: BoxDecoration(
-                      border: Border.all(color: Colors.black),
+                      border: Border.all(
+                        color: Color.fromRGBO(253, 145, 145, 1),
+                      ),
                       borderRadius: BorderRadius.horizontal(
                         left: Radius.circular(20),
                       ),
@@ -58,11 +73,19 @@ class _SubjectDetailState extends State<SubjectDetail> {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text(total),
+                        Text(
+                          total,
+                          style: TextStyle(color: Colors.white),
+                        ),
                         SizedBox(
                           height: mediaQuery.size.height * 0.010,
                         ),
-                        Text('Total'),
+                        Text(
+                          'Total',
+                          style: TextStyle(
+                            color: Color.fromRGBO(253, 145, 145, 1),
+                          ),
+                        ),
                       ],
                     ),
                   ),
@@ -78,8 +101,12 @@ class _SubjectDetailState extends State<SubjectDetail> {
                     height: mediaQuery.size.height * 0.10,
                     decoration: BoxDecoration(
                       border: Border(
-                        top: BorderSide(color: Colors.black),
-                        bottom: BorderSide(color: Colors.black),
+                        top: BorderSide(
+                          color: Color.fromRGBO(253, 145, 145, 1),
+                        ),
+                        bottom: BorderSide(
+                          color: Color.fromRGBO(253, 145, 145, 1),
+                        ),
                       ),
                     ),
                     child: InkWell(
@@ -88,11 +115,19 @@ class _SubjectDetailState extends State<SubjectDetail> {
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Text((chosenSubject['attended']).toString()),
+                          Text(
+                            (chosenSubject['attended']).toString(),
+                            style: TextStyle(color: Colors.white),
+                          ),
                           SizedBox(
                             height: mediaQuery.size.height * 0.010,
                           ),
-                          Text('Attended'),
+                          Text(
+                            'Attended',
+                            style: TextStyle(
+                              color: Color.fromRGBO(253, 145, 145, 1),
+                            ),
+                          ),
                         ],
                       ),
                     ),
@@ -108,7 +143,9 @@ class _SubjectDetailState extends State<SubjectDetail> {
                     padding: EdgeInsets.all(10),
                     height: mediaQuery.size.height * 0.10,
                     decoration: BoxDecoration(
-                      border: Border.all(color: Colors.black),
+                      border: Border.all(
+                        color: Color.fromRGBO(253, 145, 145, 1),
+                      ),
                       borderRadius: BorderRadius.horizontal(
                         right: Radius.circular(20),
                       ),
@@ -118,11 +155,19 @@ class _SubjectDetailState extends State<SubjectDetail> {
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Text((chosenSubject['missed']).toString()),
+                          Text(
+                            (chosenSubject['missed']).toString(),
+                            style: TextStyle(color: Colors.white),
+                          ),
                           SizedBox(
                             height: mediaQuery.size.height * 0.010,
                           ),
-                          Text('Missed'),
+                          Text(
+                            'Missed',
+                            style: TextStyle(
+                              color: Color.fromRGBO(253, 145, 145, 1),
+                            ),
+                          ),
                         ],
                       ),
                     ),
@@ -143,7 +188,12 @@ class _SubjectDetailState extends State<SubjectDetail> {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text('Class Link'),
+              Text(
+                'Class Link',
+                style: TextStyle(
+                  color: Color.fromRGBO(253, 145, 145, 1),
+                ),
+              ),
               Container(
                 margin: EdgeInsets.only(
                   top: mediaQuery.size.height * .04,
@@ -152,7 +202,9 @@ class _SubjectDetailState extends State<SubjectDetail> {
                 width: mediaQuery.size.width * .50,
                 decoration: BoxDecoration(
                   border: Border(
-                    bottom: BorderSide(color: Colors.black),
+                    bottom: BorderSide(
+                      color: Color.fromRGBO(253, 145, 145, 1),
+                    ),
                   ),
                 ),
               ),
@@ -161,24 +213,66 @@ class _SubjectDetailState extends State<SubjectDetail> {
           //Class Link Ends
 
           //Voting button starts
-          InkWell(
-            splashColor: Colors.red,
-            onTap: () {},
-            child: Container(
-              width: mediaQuery.size.width * .35,
-              height: mediaQuery.size.height * .06,
-              decoration: BoxDecoration(
-                border: Border.all(color: Colors.black),
-                borderRadius: BorderRadius.circular(20),
-              ),
-              child: Center(
-                child: Text(
-                  'vote',
-                  style: TextStyle(fontSize: 20),
+          hasVotingStarted
+              ? InkWell(
+                  splashColor: Colors.red,
+                  onTap: () {
+                    return showBottomSheet(
+                        context: context,
+                        builder: (_) => VotingStarted(chosenSubject, userData));
+                  },
+                  child: Container(
+                    width: mediaQuery.size.width * .35,
+                    height: mediaQuery.size.height * .06,
+                    decoration: BoxDecoration(
+                      border: Border.all(
+                        color: Color.fromRGBO(253, 145, 145, 1),
+                      ),
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    child: Center(
+                      child: Text(
+                        'Vote',
+                        style: TextStyle(
+                          fontSize: 20,
+                          color: Color.fromRGBO(253, 145, 145, 1),
+                        ),
+                      ),
+                    ),
+                  ),
+                )
+              : InkWell(
+                  splashColor: Colors.red,
+                  onTap: () {
+                    Navigator.pop(context);
+                    return showBottomSheet(
+                      context: context,
+                      builder: (_) => Voting(
+                        chosenSubject,
+                        userData,
+                      ),
+                    );
+                  },
+                  child: Container(
+                    width: mediaQuery.size.width * .35,
+                    height: mediaQuery.size.height * .06,
+                    decoration: BoxDecoration(
+                      border: Border.all(
+                        color: Color.fromRGBO(253, 145, 145, 1),
+                      ),
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    child: Center(
+                      child: Text(
+                        'Start',
+                        style: TextStyle(
+                          fontSize: 20,
+                          color: Color.fromRGBO(253, 145, 145, 1),
+                        ),
+                      ),
+                    ),
+                  ),
                 ),
-              ),
-            ),
-          ),
           //Voting button ends
         ],
       ),
@@ -230,48 +324,79 @@ class _SubjectDetailState extends State<SubjectDetail> {
   @override
   Widget build(BuildContext context) {
     DataProvider provider = Provider.of<DataProvider>(context);
+    bool hasVotingStarted;
 
-    return SingleChildScrollView(
-      //Making it center starts
-      child: Align(
-        alignment: Alignment.bottomCenter,
-        child: ConstrainedBox(
-          constraints: BoxConstraints(
-            minWidth: MediaQuery.of(context).size.width * .80,
-            maxWidth: MediaQuery.of(context).size.width * .80,
-            minHeight: MediaQuery.of(context).size.height * .45,
-            maxHeight: MediaQuery.of(context).size.height * .45,
-          ),
-          //Making it center ends
+    Future getData(String subjectName) async {
+      await FirebaseFirestore.instance
+          .collection('student')
+          .doc(widget.userData.uid)
+          .collection('subjects')
+          .get()
+          .then((value) {
+        Map<String, dynamic> docData = value.docs.first.data();
+        print(docData[subjectName]);
+        hasVotingStarted = docData[subjectName]['isvotingStarted'];
+      });
+      return 1;
+    }
 
-          //Box decoration  starts
-          child: Container(
-            decoration: BoxDecoration(
-              color: Colors.white,
-              border: Border.all(color: Colors.black),
-              borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(30),
-                topRight: Radius.circular(30),
-              ),
-              boxShadow: [
-                BoxShadow(
-                  spreadRadius: 1,
+    return FutureBuilder(
+        future: getData(widget.chosenSubject['subjectName']),
+        builder: (context, snapshot) {
+          if (snapshot.hasData) {
+            return SingleChildScrollView(
+              //Making it center starts
+              child: Align(
+                alignment: Alignment.bottomCenter,
+                child: ConstrainedBox(
+                  constraints: BoxConstraints(
+                    minWidth: MediaQuery.of(context).size.width * .80,
+                    maxWidth: MediaQuery.of(context).size.width * .80,
+                    minHeight: MediaQuery.of(context).size.height * .45,
+                    maxHeight: MediaQuery.of(context).size.height * .45,
+                  ),
+                  //Making it center ends
+
+                  //Box decoration  starts
+                  child: Neumorphic(
+                    style: NeumorphicStyle(
+                      boxShape: NeumorphicBoxShape.roundRect(
+                        BorderRadius.only(
+                          topLeft: Radius.circular(20),
+                          topRight: Radius.circular(20),
+                        ),
+                      ),
+                      depth: -5,
+                      shadowLightColorEmboss: Colors.black,
+                      lightSource: LightSource.bottomRight,
+                      shadowDarkColorEmboss: Colors.black.withOpacity(0.6),
+                      color: Color(0xff162447),
+                    ),
+                    child: Container(
+                      //Box Decoration ends
+
+                      //Subject Shown Logic starts
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          subjectDetailDesign(
+                            widget.chosenSubject,
+                            context,
+                            provider,
+                            widget.userData,
+                            hasVotingStarted,
+                          ),
+                        ],
+                      ),
+                      //Subject shown logic ends
+                    ),
+                  ),
                 ),
-              ],
-            ),
-            //Box Decoration ends
-
-            //Subject Shown Logic starts
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                subjectDetailDesign(widget.chosenSubject, context, provider),
-              ],
-            ),
-            //Subject shown logic ends
-          ),
-        ),
-      ),
-    );
+              ),
+            );
+          } else {
+            return CircularProgressIndicator();
+          }
+        });
   }
 }

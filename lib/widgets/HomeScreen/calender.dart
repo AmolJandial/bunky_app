@@ -39,7 +39,11 @@ class _CalenderState extends State<Calender> {
     if (formattedDate == chosenDate) {
       return Text(
         formattedDate,
-        style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+        style: TextStyle(
+          fontSize: 30,
+          fontWeight: FontWeight.bold,
+          color: Color.fromRGBO(253, 145, 145, 1),
+        ),
       );
     } else if (formattedDate == tommorowDate ||
         formattedDate == yesterdayDate) {
@@ -47,7 +51,7 @@ class _CalenderState extends State<Calender> {
         formattedDate,
         style: TextStyle(
           fontSize: 25,
-          color: Colors.black87,
+          color: Color.fromRGBO(253, 145, 145, 1),
         ),
       );
     }
@@ -55,7 +59,7 @@ class _CalenderState extends State<Calender> {
       formattedDate,
       style: TextStyle(
         fontSize: 20,
-        color: Colors.black38,
+        color: Color.fromRGBO(253, 145, 145, 1),
       ),
     );
   }

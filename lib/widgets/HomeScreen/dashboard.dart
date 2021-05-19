@@ -1,7 +1,7 @@
 import 'package:bunky_app/widgets/HomeScreen/image_card.dart';
 import 'package:flutter/material.dart';
 import './subjects.dart';
-import './bottom_nav_bar.dart';
+import '../../constants/bottom_nav_bar.dart';
 
 class Dashboard extends StatelessWidget {
   @override
@@ -14,6 +14,7 @@ class Dashboard extends StatelessWidget {
             Container(
               width: constraints.maxWidth * .80,
               height: constraints.maxHeight * .35,
+              color: Colors.pink,
               child: ImageCard(),
             ),
             //Card building ends

@@ -1,4 +1,5 @@
 import 'package:bunky_app/screens/home_screen.dart';
+import 'package:bunky_app/screens/logIn_screen.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -46,22 +47,29 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
         _course,
       );
       try {
+        print('1. Register button is pressed');
         UserCredential user = await _auth.createUserWithEmailAndPassword(
             email: _email, password: _password);
-        user.user.updateProfile(displayName: _username).then((onValue) {
+        print('2. User is Registered');
+
+        print('3. User database is being initalized');
+        FirebaseFirestore.instance
+            .collection('student')
+            .doc(user.user.uid)
+            .set({
+          'email': _email,
+          'username': _username,
+          'semester': _semester,
+          'course': _course,
+        }).then((value) {
           FirebaseFirestore.instance
               .collection('student')
               .doc(user.user.uid)
-              .set({'email': _email, 'username': _username}).then((value) {
-            FirebaseFirestore.instance
-                .collection('student')
-                .doc(user.user.uid)
-                .collection('subjects')
-                .add(filteredSubjects);
-          });
-
-          Navigator.of(context).pushReplacementNamed(Home.routeName);
+              .collection('subjects')
+              .add(filteredSubjects);
         });
+        print('4. User database is initializned and goes to Login Screen');
+        Navigator.of(context).pushReplacementNamed(LogInScreen.routeName);
       } catch (e) {
         switch (e.code) {
           case 'ERROR_EMAIL_ALREADY_IN_USE':

@@ -1,10 +1,13 @@
+import 'package:bunky_app/models/provider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import 'dashboard.dart';
 
 class HomeScreenBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    DataProvider provider = Provider.of<DataProvider>(context);
     final scaffoldKey = GlobalKey<ScaffoldState>();
 
     return SafeArea(
@@ -12,21 +15,10 @@ class HomeScreenBody extends StatelessWidget {
         builder: (context, constraints) {
           return Scaffold(
             //Top left Hamburger Start
-            key: scaffoldKey,
-            drawer: Drawer(
-              child: ListView(),
-            ),
+
             body: Stack(
               fit: StackFit.expand,
               children: [
-                Positioned(
-                  left: 10,
-                  top: 10,
-                  child: IconButton(
-                    icon: Icon(Icons.menu),
-                    onPressed: () => scaffoldKey.currentState.openDrawer(),
-                  ),
-                ),
                 //Top left Hamburger end
 
                 //Main body start

@@ -32,6 +32,7 @@ class _LogInScreenState extends State<LogInScreen> {
     if (_formKey.currentState.validate()) {
       form.save();
       try {
+        print('5. User has clicked login button');
         UserCredential user = await FirebaseAuth.instance
             .signInWithEmailAndPassword(email: _email, password: _password);
         Navigator.of(context).pushReplacementNamed(Home.routeName);

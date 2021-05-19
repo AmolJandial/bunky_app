@@ -3,6 +3,7 @@ import 'package:bunky_app/screens/home_screen.dart';
 import 'package:bunky_app/screens/settings_screen.dart';
 import 'package:bunky_app/screens/subject_grid_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 
 class BottomNavBar extends StatefulWidget {
   final String currentScreen;
@@ -18,17 +19,18 @@ class _BottomNavBarState extends State<BottomNavBar> {
       decoration: BoxDecoration(
         border: Border(
           top: BorderSide(
-            color: Colors.black,
+            color: Color.fromRGBO(253, 145, 145, 1),
             width: 2,
           ),
         ),
       ),
       child: BottomNavigationBar(
+        selectedItemColor: Colors.red,
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: IconButton(
               icon: Icon(Icons.settings),
-              color: Colors.black,
+              color: Color.fromRGBO(253, 145, 145, 1),
               onPressed: () {
                 widget.currentScreen == 'settings'
                     // ignore: unnecessary_statements
@@ -41,7 +43,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
           BottomNavigationBarItem(
             icon: IconButton(
               icon: Icon(Icons.home),
-              color: Colors.black,
+              color: Color.fromRGBO(253, 145, 145, 1),
               onPressed: () {
                 widget.currentScreen == 'home'
                     // ignore: unnecessary_statements
@@ -54,7 +56,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
           BottomNavigationBarItem(
             icon: IconButton(
               icon: Icon(Icons.folder_open_rounded),
-              color: Colors.black,
+              color: Color.fromRGBO(253, 145, 145, 1),
               onPressed: () {
                 widget.currentScreen == 'subjectsGrid'
                     // ignore: unnecessary_statements

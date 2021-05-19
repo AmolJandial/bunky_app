@@ -4,10 +4,16 @@ import 'package:flutter/material.dart';
 class UserData {
   final String username;
   final String email;
+  final String semester;
+  final String course;
+  final String uid;
 
   UserData({
     this.email,
     this.username,
+    this.course,
+    this.semester,
+    this.uid,
   });
 }
 
@@ -44,6 +50,9 @@ class DataProvider extends ChangeNotifier {
     UserData userData = UserData(
       email: userDataFirestore['email'],
       username: userDataFirestore['username'],
+      semester: userDataFirestore['semester'],
+      course: userDataFirestore['course'],
+      uid: uid,
     );
     data = userData;
 

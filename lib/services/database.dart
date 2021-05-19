@@ -12,7 +12,10 @@ class Database {
               'attended': 0,
               'missed': 0,
               'totalAttended': 0,
-              'subjectDate': ['Mon', 'Tue', 'Wed']
+              'subjectDate': ['Mon', 'Tue', 'Wed'],
+              'votes': 0,
+              'isvotingStarted': false,
+              'hasVoted': false,
             },
             'Calculus': {
               'subjectName': 'Calculus',
@@ -20,7 +23,10 @@ class Database {
               'attended': 0,
               'missed': 0,
               'totalAttended': 0,
-              'subjectDate': ['Mon', 'Tue', 'Wed']
+              'subjectDate': ['Mon', 'Tue', 'Wed'],
+              'votes': 0,
+              'isvotingStarted': false,
+              'hasVoted': false,
             },
             'Microprocessor': {
               'subjectName': 'Microprocessor',
@@ -28,7 +34,10 @@ class Database {
               'attended': 0,
               'missed': 0,
               'totalAttended': 0,
-              'subjectDate': ['Thu', 'Fri', 'Sat']
+              'subjectDate': ['Thu', 'Fri', 'Sat'],
+              'votes': 0,
+              'isvotingStarted': false,
+              'hasVoted': false,
             }
           };
           break;

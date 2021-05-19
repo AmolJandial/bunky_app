@@ -18,12 +18,12 @@ class Home extends StatelessWidget {
       child: FutureBuilder(
           future: waitForUser(),
           builder: (context, AsyncSnapshot user) {
-            if (user.connectionState == ConnectionState.waiting) {
-              return CircularProgressIndicator();
-            } else {
+            print('6. User uid has been get from database');
+            if (user.hasData) {
               User currentUser = user.data;
-              return DataInitialize(currentUser.uid);
+              return DataInitialize(currentUser.uid, 'home');
             }
+            return CircularProgressIndicator();
           }),
     );
   }
