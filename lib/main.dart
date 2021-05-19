@@ -39,7 +39,7 @@ class MyApp extends StatelessWidget {
         //Garvit --> 255, 222, 222, 1
         textTheme: ThemeData.light().textTheme.copyWith(
               headline1: TextStyle(
-                fontSize: 20,
+                fontSize: 21,
                 fontWeight: FontWeight.bold,
                 color: Colors.white,
               ),
