@@ -22,6 +22,7 @@ class _VotingState extends State<Voting> {
       'semester': widget.userData.semester,
       'course': widget.userData.course,
       'votes': 0,
+      'timestamp': FieldValue.serverTimestamp(),
     });
     FirebaseFirestore.instance.collection('student').get().then((value) {
       for (DocumentSnapshot doc in value.docs) {

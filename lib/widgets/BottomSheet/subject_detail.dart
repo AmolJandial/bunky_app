@@ -352,8 +352,8 @@ class _SubjectDetailState extends State<SubjectDetail> {
                   constraints: BoxConstraints(
                     minWidth: MediaQuery.of(context).size.width * .80,
                     maxWidth: MediaQuery.of(context).size.width * .80,
-                    minHeight: MediaQuery.of(context).size.height * .45,
-                    maxHeight: MediaQuery.of(context).size.height * .45,
+                    minHeight: MediaQuery.of(context).size.height * .47,
+                    maxHeight: MediaQuery.of(context).size.height * .47,
                   ),
                   //Making it center ends
 

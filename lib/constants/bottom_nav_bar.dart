@@ -15,6 +15,8 @@ class BottomNavBar extends StatefulWidget {
 class _BottomNavBarState extends State<BottomNavBar> {
   @override
   Widget build(BuildContext context) {
+    Color unselectedColor = Color.fromRGBO(253, 145, 145, 1);
+
     return Container(
       decoration: BoxDecoration(
         border: Border(
@@ -25,12 +27,11 @@ class _BottomNavBarState extends State<BottomNavBar> {
         ),
       ),
       child: BottomNavigationBar(
-        selectedItemColor: Colors.red,
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: IconButton(
               icon: Icon(Icons.settings),
-              color: Color.fromRGBO(253, 145, 145, 1),
+              color: unselectedColor,
               onPressed: () {
                 widget.currentScreen == 'settings'
                     // ignore: unnecessary_statements

@@ -12,41 +12,37 @@ class SubjectGridBuilder extends StatelessWidget {
     DataProvider dataProvider = Provider.of<DataProvider>(context);
     List<dynamic> subjects = dataProvider.subjects;
     print('grid screen $subjects');
-    return SafeArea(
-      child: Scaffold(
-        body: Stack(
-          fit: StackFit.expand,
+    return Stack(
+      fit: StackFit.expand,
+      children: [
+        Column(
           children: [
-            Column(
-              children: [
-                Expanded(
-                  flex: 12,
-                  child: LayoutBuilder(
-                    builder: (context, constraints) {
-                      return GridView.builder(
-                        padding: EdgeInsets.all(30),
-                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: 2,
-                          childAspectRatio: 2 / 5,
-                          mainAxisSpacing: constraints.maxHeight * 0.04,
-                          crossAxisSpacing: constraints.maxWidth * 0.1,
-                          mainAxisExtent: constraints.maxHeight * 0.25,
-                        ),
-                        itemBuilder: (context, index) {
-                          return gridItems(subjects[index], context);
-                        },
-                        itemCount: subjects.length,
-                      );
+            Expanded(
+              flex: 12,
+              child: LayoutBuilder(
+                builder: (context, constraints) {
+                  return GridView.builder(
+                    padding: EdgeInsets.all(30),
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                      childAspectRatio: 2 / 5,
+                      mainAxisSpacing: constraints.maxHeight * 0.04,
+                      crossAxisSpacing: constraints.maxWidth * 0.1,
+                      mainAxisExtent: constraints.maxHeight * 0.25,
+                    ),
+                    itemBuilder: (context, index) {
+                      return gridItems(subjects[index], context);
                     },
-                  ),
-                ),
-              ],
+                    itemCount: subjects.length,
+                  );
+                },
+              ),
             ),
           ],
         ),
-        bottomNavigationBar: BottomNavBar('subjectsGrid'),
-      ),
+      ],
     );
+    // bottomNavigationBar: BottomNavBar('subjectsGrid'),
   }
 
   Widget gridItems(Map<String, dynamic> subject, BuildContext context) {

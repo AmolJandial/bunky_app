@@ -25,11 +25,6 @@ class HomeScreenBody extends StatelessWidget {
                 Column(
                   children: [
                     Expanded(
-                      flex: 1,
-                      child: Container(),
-                    ),
-                    Expanded(
-                      flex: 12,
                       child: Dashboard(),
                     ),
                   ],

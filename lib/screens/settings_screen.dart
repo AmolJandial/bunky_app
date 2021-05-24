@@ -7,67 +7,65 @@ class Settings extends StatelessWidget {
   static const routeName = '/settings';
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Column(
+    return SingleChildScrollView(
+      child: Column(
         children: [
           TopAppBar().topAppBar(
             'Settings',
             context,
           ),
-          Expanded(
-            child: SingleChildScrollView(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  SizedBox(
-                    height: 20,
-                  ),
-                  Text(
-                    'General',
-                    style: TextStyle(
-                        fontSize: 24, color: Color.fromRGBO(253, 145, 145, 1)),
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  settingOption(
-                    'Account',
-                    Icons.account_circle_outlined,
-                    context,
-                  ),
-                  settingOption(
-                    'Logout',
-                    Icons.logout,
-                    context,
-                  ),
-                  settingOption(
-                    'Notifications',
-                    Icons.notifications_outlined,
-                    context,
-                  ),
-                  Text(
-                    'Feedback',
-                    style: TextStyle(
-                        fontSize: 24, color: Color.fromRGBO(253, 145, 145, 1)),
-                  ),
-                  settingOption(
-                    'Send Feedback',
-                    Icons.send_outlined,
-                    context,
-                  ),
-                  settingOption(
-                    'Report a Bug',
-                    Icons.bug_report_outlined,
-                    context,
-                  ),
-                ],
-              ),
+          SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                SizedBox(
+                  height: 20,
+                ),
+                Text(
+                  'General',
+                  style: TextStyle(
+                      fontSize: 24, color: Color.fromRGBO(253, 145, 145, 1)),
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                settingOption(
+                  'Account',
+                  Icons.account_circle_outlined,
+                  context,
+                ),
+                settingOption(
+                  'Logout',
+                  Icons.logout,
+                  context,
+                ),
+                settingOption(
+                  'Notifications',
+                  Icons.notifications_outlined,
+                  context,
+                ),
+                Text(
+                  'Feedback',
+                  style: TextStyle(
+                      fontSize: 24, color: Color.fromRGBO(253, 145, 145, 1)),
+                ),
+                settingOption(
+                  'Send Feedback',
+                  Icons.send_outlined,
+                  context,
+                ),
+                settingOption(
+                  'Report a Bug',
+                  Icons.bug_report_outlined,
+                  context,
+                ),
+              ],
             ),
           ),
         ],
       ),
-      bottomNavigationBar: BottomNavBar('settings'),
     );
+    // bottomNavigationBar: BottomNavBar('settings'),
   }
 
   Widget settingOption(String title, IconData icon, BuildContext ctx) {

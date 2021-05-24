@@ -52,7 +52,7 @@ Widget customListTile(List<dynamic> chosenSubject, int index,
     child: Container(
       child: Neumorphic(
         style: NeumorphicStyle(
-            boxShape: NeumorphicBoxShape.beveled(
+            boxShape: NeumorphicBoxShape.roundRect(
               BorderRadius.circular(20),
             ),
             depth: -5,

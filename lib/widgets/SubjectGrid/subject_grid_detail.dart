@@ -28,25 +28,25 @@ class SubjectGridDetail extends StatelessWidget {
                 child: ListView(
                   children: [
                     subejectOptions(
-                      Icons.menu_book_rounded,
+                      Icons.menu_book_sharp,
                       'Books',
-                      Icons.download_sharp,
+                      Icons.download_outlined,
                       context,
                     ),
                     subejectOptions(
                       Icons.file_present,
                       'Syllabus',
-                      Icons.download_sharp,
+                      Icons.download_outlined,
                       context,
                     ),
                     subejectOptions(
-                      Icons.description_outlined,
+                      Icons.description_sharp,
                       'Paper',
-                      Icons.download_sharp,
+                      Icons.download_outlined,
                       context,
                     ),
                     subejectOptions(
-                      Icons.video_collection_outlined,
+                      Icons.video_collection_sharp,
                       'Playlist',
                       Icons.open_in_new_rounded,
                       context,
